@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Agency CRM</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-dot"></span>
+    <h1>AI Agency <span>CRM</span></h1>
+  </div>
+  <button id="newClientBtn" class="btn btn-primary">+ Új ügyfél</button>
+</header>
+
+<main>
+  <div class="toolbar">
+    <input type="text" id="searchInput" placeholder="Keresés cégnév, kapcsolattartó, email, niche vagy szolgáltatás alapján...">
+    <select id="statusFilter">
+      <option value="all">Összes státusz</option>
+    </select>
+  </div>
+
+  <div class="table-wrap">
+    <table id="clientsTable">
+      <thead>
+        <tr>
+          <th>Vállalkozás</th>
+          <th>Kapcsolattartó</th>
+          <th>Email</th>
+          <th>Telefon</th>
+          <th>Niche</th>
+          <th>Szolgáltatás</th>
+          <th>Státusz</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="clientsBody">
+      </tbody>
+    </table>
+    <p id="emptyState" class="empty-state" style="display:none;">Nincs még ügyfél felvéve. Kattints a "+ Új ügyfél" gombra.</p>
+  </div>
+</main>
+
+<!-- Modal: ügyfél hozzáadás / szerkesztés -->
+<div id="modalOverlay" class="modal-overlay">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 id="modalTitle">Új ügyfél</h2>
+      <button id="closeModalBtn" class="btn-icon">&times;</button>
+    </div>
+    <form id="clientForm">
+      <input type="hidden" id="clientId">
+      <div class="form-grid">
+        <label>Vállalkozás neve *
+          <input type="text" id="company_name" required>
+        </label>
+        <label>Kapcsolattartó
+          <input type="text" id="contact_name">
+        </label>
+        <label>Email
+          <input type="email" id="email">
+        </label>
+        <label>Telefonszám
+          <input type="text" id="phone">
+        </label>
+        <label>Niche / iparág
+          <input type="text" id="niche">
+        </label>
+        <label>Milyen szolgáltatást csinálunk nekik
+          <input type="text" id="service" placeholder="pl. chatbot, weboldal, AI agent">
+        </label>
+        <label>Státusz
+          <select id="status"></select>
+        </label>
+      </div>
+      <label class="full-width">Jegyzetek
+        <textarea id="notes" rows="3"></textarea>
+      </label>
+      <div class="modal-actions">
+        <button type="button" id="deleteBtn" class="btn btn-danger" style="display:none;">Törlés</button>
+        <div class="spacer"></div>
+        <button type="button" id="cancelBtn" class="btn btn-ghost">Mégse</button>
+        <button type="submit" class="btn btn-primary">Mentés</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

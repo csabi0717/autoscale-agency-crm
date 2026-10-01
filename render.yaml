@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: ai-agency-crm
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    disk:
+      name: crm-data
+      mountPath: /data
+      sizeGB: 1
